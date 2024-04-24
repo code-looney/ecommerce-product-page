@@ -4,7 +4,7 @@ const Cart = (props) => {
     const {...rest} = props;
 
   return (
-    <img {...rest} />
+    <button><img {...rest} /></button>
   )
 }
 

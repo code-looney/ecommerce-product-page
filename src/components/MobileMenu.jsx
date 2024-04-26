@@ -1,13 +1,11 @@
 import Container from './Container'
 import React from 'react'
 
-const Menu = (props) => {
+const MobileMenu = (props) => {
     const {children, ...rest} = props
   return (
-    <Container>
-        <div {...rest}>{children}</div>
-    </Container>
+        <Container {...rest}>{children}</Container>
   )
 }
 
-export default Menu
+export default MobileMenu

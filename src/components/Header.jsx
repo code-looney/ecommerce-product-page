@@ -5,46 +5,45 @@ import Cart from './Cart'
 import Profile from './Profile'
 import { Link } from 'react-router-dom'
 import HumburgerMenu from './HumburgerMenu'
-import Menu from './Menu'
+import MobileMenu from './MobileMenu'
 
 const Header = () => {
-    const [toggle, setToggle] = useState('menu');
-    const [menu, setMenu] = useState('block');
-    const [shadow, setShadow] = useState('black');
-    const [zIndex, setZIndex] = useState('z-50');
-    const colors = ['bg-black', 'bg-white']
-    const zindex = ['z-50']
+  const [toggle, setToggle] = useState('menu');
+  const [menu, setMenu] = useState('hidden');
+  const [shadow, setShadow] = useState('black');
+  const [zIndex, setZIndex] = useState('z-50');
+  const colors = ['bg-black', 'bg-white']
+  const zindex = ['z-50']
 
-    function handleMenuClick() {
-      if (toggle === 'menu') {
-        setToggle('close')
-        setMenu('block')
-        setShadow('black')
-        setZIndex('')
-      } else {
-        setToggle('menu')
-        setMenu('hidden')
-        setShadow('white')
-        setZIndex('z-50')
+  function handleMenuClick() {
+    if (toggle === 'menu') {
+      setToggle('close')
+      setMenu('block')
+      setShadow('black')
+      setZIndex('')
+    } else {
+      setToggle('menu')
+      setMenu('hidden')
+      setShadow('white')
+      setZIndex('z-50')
 
-      }
     }
-
+  }
   return (
     <header className={`h-16 flex items-center justify-center`}>
      <Container className='flex h-full w-full px-5 justify-between'>
         <Container className="flex">
-          <Menu
-          className={`bg-white absolute h-screen w-64 top-0 left-0 z-50 ${menu} flex flex-col pl-5 pt-16 gap-4 font-medium `}>
+          <MobileMenu
+          className={`bg-white absolute h-screen w-64 top-0 left-0 z-50 ${menu} flex flex-col pl-5 pt-16 gap-4 font-medium md:hidden `}>
             <Link>Connections</Link>
             <Link>Men</Link>
             <Link>Women</Link>
             <Link>About</Link>
             <Link>Contact</Link>
-          </Menu>
-          <Menu className={`absolute bg-${shadow} opacity-70 top-0 left-0 z-10 w-full h-full`} />
+          </MobileMenu>
+          <MobileMenu className={`absolute bg-${shadow} ${menu} opacity-70 top-0 left-0 z-10 w-full h-full md:hidden`} />
           <Container className="flex gap-4">
-            <HumburgerMenu className='relative z-50 w-[18px]' onClick={handleMenuClick} src={`public/images/icon-${toggle}.svg`} />
+            <HumburgerMenu className='relative z-50 w-[18px] md:hidden' onClick={handleMenuClick} src={`public/images/icon-${toggle}.svg`} />
             <Container className='flex items-center'>
             <Logo src="public/images/logo.svg" />
           </Container>

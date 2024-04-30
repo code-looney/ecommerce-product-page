@@ -5,6 +5,7 @@ export default function App() {
   return (
     <Container>
       <Header />
+      {/* <hr className="w-96 flex justify-center " /> */}
     </Container>
   )
 }

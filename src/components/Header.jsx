@@ -48,21 +48,21 @@ const Header = () => {
           <Container className='flex items-center'>
             <Logo src="public/images/logo.svg" />
           </Container>
-          <DeskMenu className='hidden md:flex md:gap-5 pl-10 text-[14px]'>
-            <Link>Connections</Link>
-              <Link>Men</Link>
-              <Link>Women</Link>
-              <Link>About</Link>
-              <Link>Contact</Link>
+          <DeskMenu className='hidden md:flex md:gap-5 pl-10 text-[14px] h-full'>
+            <Link className='hover:border-b-violet-600 border-b-4 border-transparent h-full flex items-center'>Connections</Link>
+              <Link className='hover:border-b-violet-600 border-b-4 border-transparent h-full flex items-center'>Men</Link>
+              <Link className='hover:border-b-violet-600 border-b-4 border-transparent h-full flex items-center'>Women</Link>
+              <Link className='hover:border-b-violet-600 border-b-4 border-transparent h-full flex items-center'>About</Link>
+              <Link className='hover:border-b-violet-600 border-b-4 border-transparent h-full flex items-center'>Contact</Link>
           </DeskMenu>
         </Container>
       </Container>
       <Container className={`flex gap-4 relative ${zIndex}`}>
         <Container className="flex items-center gap-5">
-          <Container>
+          <Container className="w-4">
             <Cart src="public/images/icon-cart.svg" />
           </Container>
-          <Container className="w-6">
+          <Container className="w-6 md:w-8">
             <Profile src="public/images/image-avatar.png" />
           </Container>
         </Container>

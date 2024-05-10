@@ -13,14 +13,19 @@ export default function App() {
 
 
   function hamdleNextImageClick() {
-      setImage(image  + 1)
+      setImage(image + 1)
+
+      // if (image === 4) { // This repeating the cycle from 4 to 1
+      // dont forget to adjust the disabled button 
+      //   setImage(1)
+      // } else {
+      //   setImage(image + 1)
+      // }
   }
 
    function hamdlePrevImageClick() {
       setImage(image - 1)
   }
-
-
 
   return (
     <Container>

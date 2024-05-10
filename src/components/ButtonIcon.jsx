@@ -2,10 +2,10 @@ import React from 'react'
 import clsx from 'clsx'
 
 const ButtonIcon = (props) => {
-    const {classnameiconbtn, ...rest} = props
+    const {classnameiconbtn, onClick, disabled, ...rest} = props
 
   return (
-    <button className={classnameiconbtn} ><img {...rest} /></button>
+    <button disabled={disabled} onClick={onClick} className={classnameiconbtn} ><img {...rest} /></button>
   )
 }
 

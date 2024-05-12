@@ -23,11 +23,7 @@ export default function App() {
     fetch("./data.json")
     .then(res => res.json())
     .then(data => {
-      // console.log(data[0].price)
-      data.map(item => {
-        let formatedPrice = item.price.toFixed(2)
-        setPrice(formatedPrice)
-      })
+        setPrice(data)
     })
   }, [])
 
@@ -74,8 +70,10 @@ export default function App() {
           </Container>
         </Container>
         <Container className="flex flex-col gap-5">
-          {console.log(price)}
-          <Sale>{discount}%</Sale>
+          {price && price.map(item => {
+           return <BasePrice key={item.id}>{(item.price * item.discount).toFixed(2)}</BasePrice>
+          })}
+          
         </Container>
         {/* <Container>
           <Thumbnail src="public/images/image-product-1-thumbnail.jpg" />

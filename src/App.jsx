@@ -72,14 +72,14 @@ export default function App() {
         </Container>
         <Container className="flex flex-col gap-5">
           {price && price.map(item => {
+             // dynamic id plaatsen / leren
            return (
               <Container key={item.id} className="flex gap-5">
-                {console.log( )}
+                { console.log(crypto.randomUUID() )} 
                 <BasePrice>{`$${(item.discount ? item.price * item.discount : item.price).toFixed(2)}`}</BasePrice>
-                <Sale>{item.sale}</Sale>
+                <Sale>{item.sale}%</Sale>
                 <FullPrice className="line-through">${item.price.toFixed(2)}</FullPrice>
               </Container>
-              // dynamic id plaatsen / leren
            )
           })}
           

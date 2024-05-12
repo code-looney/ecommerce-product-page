@@ -74,11 +74,15 @@ export default function App() {
           {price && price.map(item => {
              // dynamic id plaatsen / leren
            return (
-              <Container key={item.id} className="flex gap-5">
+              <Container key={item.id}>
                 { console.log(crypto.randomUUID() )} 
-                <BasePrice>{`$${(item.discount ? item.price * item.discount : item.price).toFixed(2)}`}</BasePrice>
-                <Sale>{item.sale}%</Sale>
-                <FullPrice className="line-through">${item.price.toFixed(2)}</FullPrice>
+                <Container className="px-10 flex outline justify-between w-full">
+                  <Container className="flex gap-5 items-center">
+                    <BasePrice className="font-bold text-[21px]">{`$${(item.discount ? item.price * item.discount : item.price).toFixed(2)}`}</BasePrice>
+                    <Sale>{item.sale}%</Sale>
+                  </Container>
+                  <FullPrice className="line-through">${item.price.toFixed(2)}</FullPrice>
+                </Container>
               </Container>
            )
           })}

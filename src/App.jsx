@@ -71,7 +71,12 @@ export default function App() {
         </Container>
         <Container className="flex flex-col gap-5">
           {price && price.map(item => {
-           return <BasePrice key={item.id}>{(item.price * item.discount).toFixed(2)}</BasePrice>
+           return (
+              <Container className="flex gap-5">
+                <BasePrice key={item.id}>{`${(item.price * item.discount).toFixed(2)}`}</BasePrice>
+                <Sale>{item.sale}</Sale>
+              </Container>
+           )
           })}
           
         </Container>

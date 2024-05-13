@@ -10,8 +10,12 @@ import Paragraph from "./components/Paragraph"
 import BasePrice from "./components/BasePrice"
 import Sale from "./components/Sale"
 import FullPrice from "./components/FullPrice"
+import Counter from "./components/Counter"
+import Icon from "./components/Icon"
+import Button from "./components/Button"
 
 export default function App() {
+  const [count, setCount] = useState(0);
   const [price, setPrice] = useState(null)
   const [discount, setDiscount] = useState(50)
   const [nextImage, setNextImage] = useState(null)
@@ -66,7 +70,7 @@ export default function App() {
           <Container className="px-5 w-full flex flex-col gap-3">
             <Title className="uppercase font-bold text-[14px] text-orange hsl(26, 100%, 55%)]">Sneaker Company</Title>
             <Sub className="text-[32px] font-bold tracking-wide leading-9">Fall Limited Edition<br />Sneakers</Sub>
-            <Paragraph className="text-lightGrayish text-[14px] tracking-wider leading-6">These low-profile sneakers are your perfect <br /> casual wear companion. Featuring a 
+            <Paragraph className="text-darkGrayish text-[14px] tracking-wider leading-6">These low-profile sneakers are your perfect <br /> casual wear companion. Featuring a 
               durable <br /> rubber outer sole, they’ll withstand everything <br /> the weather can offer.</Paragraph>
           </Container>
         </Container>
@@ -74,15 +78,33 @@ export default function App() {
           {price && price.map(item => {
              // dynamic id plaatsen / leren
            return (
-              <Container key={item.id}>
+              <Container key={item.id} className="flex flex-col gap-4">
                 { console.log(crypto.randomUUID() )} 
-                <Container className="px-10 flex outline justify-between w-full">
+                <Container className="px-5 flex justify-between w-full items-center">
                   <Container className="flex gap-5 items-center">
-                    <BasePrice className="font-bold text-[21px]">{`$${(item.discount ? item.price * item.discount : item.price).toFixed(2)}`}</BasePrice>
-                    <Sale>{item.sale}%</Sale>
+                    <BasePrice className="font-bold text-[24px]">{`$${(item.discount ? item.price * item.discount : item.price).toFixed(2)}`}</BasePrice>
+                    <Sale className="text-orange bg-paleOrange rounded-md px-2 font-bold text-[14px]">{item.sale}%</Sale>
                   </Container>
-                  <FullPrice className="line-through">${item.price.toFixed(2)}</FullPrice>
+                  <FullPrice className="line-through text-grayishBlue font-bold">${item.price.toFixed(2)}</FullPrice>
                 </Container>
+                <Container className="w-full flex ">
+                  <Container className="flex justify-between items-center w-full px-5">
+                    <Container className="flex items-center">
+                      <Button>
+                        <Icon src="public/images/icon-minus.svg" />
+                      </Button>
+                    </Container>
+                    <Counter>{count}</Counter>
+                    <Container className="flex items-center">
+                      <Button>
+                        <Icon src="public/images/icon-plus.svg" />
+                      </Button>
+                    </Container>
+                  </Container>
+                </Container>
+                  <Container className="flex justify-center">
+                    <Button className="flex gap-3 bg-orange py-3 px-28 rounded-lg"><Icon src="public/images/icon-cart.svg" />Add to cart</Button>
+                  </Container>
               </Container>
            )
           })}

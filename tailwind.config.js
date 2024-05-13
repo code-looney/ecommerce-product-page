@@ -8,7 +8,9 @@ export default {
     extend: {
       colors: {
         "orange": "hsl(26, 100%, 55%)",
-        "lightGrayish": "hsl(219, 9%, 45%)"
+        "paleOrange": "hsl(25, 100%, 94%)",
+        "darkGrayish": "hsl(219, 9%, 45%)",
+        "grayishBlue": "hsl(220, 14%, 75%)"
       }
     },
   },

@@ -13,6 +13,7 @@ import FullPrice from "./components/FullPrice"
 import Counter from "./components/Counter"
 import Icon from "./components/Icon"
 import Button from "./components/Button"
+import Thumbnail from "./components/Thumbnail"
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -64,8 +65,8 @@ export default function App() {
       <Container className="hidden md:flex justify-center w-full px-[80px]">
         <Rule  className="md:w-full"/>
       </Container>
-      <Container className="w-full">
-        <Container className="md:w-96 w-full relative">
+      <Container className="w-full md:flex">
+        <Container className="md:w-96 w-full relative md:flex-col">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[340px] object-cover" />
           <Container className="absolute top-[45%] flex justify-between w-full px-3">
             <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full">
@@ -76,19 +77,18 @@ export default function App() {
             </Container>
           </Container>
         </Container>
-        <Container className="h-[250px] flex items-center">
+        <Container className="h-[250px] md:flex flex-col items-center outline">
           <Container className="px-5 w-full flex flex-col gap-3">
             <Title className="uppercase font-bold text-[14px] text-orange hsl(26, 100%, 55%)]">Sneaker Company</Title>
             <Sub className="text-[32px] font-bold tracking-wide leading-9">Fall Limited Edition<br />Sneakers</Sub>
             <Paragraph className="text-darkGrayish text-[14px] tracking-wider leading-6">These low-profile sneakers are your perfect <br /> casual wear companion. Featuring a 
               durable <br /> rubber outer sole, they’ll withstand everything <br /> the weather can offer.</Paragraph>
           </Container>
-        </Container>
-        <Container className="flex flex-col gap-5">
+          <Container className="flex flex-col">
           {price && price.map(item => {
              // dynamic id plaatsen / leren
            return (
-              <Container key={item.id} className="flex flex-col gap-4 pb-20">
+              <Container key={item.id} className="flex flex-col pb-20">
                 { console.log(crypto.randomUUID() )} 
                 <Container className="px-5 flex justify-between w-full items-center">
                   <Container className="flex gap-5 items-center">
@@ -117,15 +117,9 @@ export default function App() {
                   </Container>
               </Container>
            )
-          })}
-          
+          })}          
         </Container>
-        {/* <Container>
-          <Thumbnail src="public/images/image-product-1-thumbnail.jpg" />
-          <Thumbnail src="public/images/image-product-2-thumbnail.jpg" />
-          <Thumbnail src="public/images/image-product-3-thumbnail.jpg" />
-          <Thumbnail src="public/images/image-product-4-thumbnail.jpg" />
-        </Container> */}
+        </Container>
       </Container>
     </Container>
   )

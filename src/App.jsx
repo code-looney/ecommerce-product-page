@@ -32,6 +32,16 @@ export default function App() {
     })
   }, [])
 
+  function handleAddProduct() {
+      setCount(prev => prev + 1)
+  }
+
+    function handleSubProduct() {
+      if (count > 0) {
+        setCount(prev => prev - 1)
+      }
+  }
+
 
   function hamdleNextImageClick() {
       setImage(image + 1)
@@ -78,7 +88,7 @@ export default function App() {
           {price && price.map(item => {
              // dynamic id plaatsen / leren
            return (
-              <Container key={item.id} className="flex flex-col gap-4">
+              <Container key={item.id} className="flex flex-col gap-4 pb-20">
                 { console.log(crypto.randomUUID() )} 
                 <Container className="px-5 flex justify-between w-full items-center">
                   <Container className="flex gap-5 items-center">
@@ -87,16 +97,16 @@ export default function App() {
                   </Container>
                   <FullPrice className="line-through text-grayishBlue font-bold">${item.price.toFixed(2)}</FullPrice>
                 </Container>
-                <Container className="w-full flex ">
-                  <Container className="flex justify-between items-center w-full px-5">
+                <Container className="w-full flex justify-center">
+                  <Container className="flex justify-between items-center px-5 w-80 py-3 rounded-lg bg-lightGrayishBlue ">
                     <Container className="flex items-center">
-                      <Button>
+                      <Button disabled={count === 0 ? true : false} onClick={handleSubProduct}>
                         <Icon src="public/images/icon-minus.svg" />
                       </Button>
                     </Container>
                     <Counter>{count}</Counter>
                     <Container className="flex items-center">
-                      <Button>
+                      <Button onClick={handleAddProduct}>
                         <Icon src="public/images/icon-plus.svg" />
                       </Button>
                     </Container>

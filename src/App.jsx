@@ -77,7 +77,7 @@ export default function App() {
             </Container>
           </Container>
         </Container>
-        <Container className="h-[250px] md:flex flex-col items-center outline">
+        <Container className="h-[250px] md:flex flex-col items-center pt-5">
           <Container className="px-5 w-full flex flex-col gap-3">
             <Title className="uppercase font-bold text-[14px] text-orange hsl(26, 100%, 55%)]">Sneaker Company</Title>
             <Sub className="text-[32px] font-bold tracking-wide leading-9">Fall Limited Edition<br />Sneakers</Sub>

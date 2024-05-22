@@ -31,8 +31,8 @@ const Header = () => {
     }
   }
   return (
-    <header className={`h-16 flex items-center justify-center ou`}>
-     <Container className='flex h-full w-full px-5 md:px-20 justify-between'>
+    <header className={`h-16 md:h-24 flex items-center justify-center ou`}>
+     <Container className='flex h-full w-full px-5 md:px-60 justify-between'>
         <Container className="flex">
           <MobileMenu
           className={`bg-white absolute h-screen w-64 top-0 left-0 z-50 ${menu} flex flex-col pl-5 pt-16 gap-4 font-medium md:hidden `}>
@@ -57,12 +57,12 @@ const Header = () => {
           </DeskMenu>
         </Container>
       </Container>
-      <Container className={`flex gap-4 relative ${zIndex}`}>
+      <Container className={`flex relative ${zIndex}`}>
         <Container className="flex items-center gap-5">
           <Container className="w-4">
             <Cart src="public/images/icon-cart.svg" />
           </Container>
-          <Container className="w-6 md:w-8">
+          <Container className="w-6 md:w-10">
             <Profile src="public/images/image-avatar.png" />
           </Container>
         </Container>

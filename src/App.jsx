@@ -61,7 +61,7 @@ export default function App() {
   }
 
   return (
-    <Container className="h-screen pb-[950px] outline">
+    <Container className="h-screen pb-[950px] md:pb-0 outline">
       <Header />
       <Container className="hidden md:flex justify-center w-full px-[240px]">
         <Rule  className="md:w-full"/>
@@ -102,9 +102,9 @@ export default function App() {
                         <FullPrice className="line-through text-grayishBlue font-bold md:text-[12px]">${item.price.toFixed(2)}</FullPrice>
                       </Container>
                     </Container>
-                    <Container className="flex flex-col gap-3 md:flex-row">
+                    <Container className="flex flex-col gap-3 md:flex-row pt-0 md:pt-3">
                       <Container className="w-full flex justify-center">
-                        <Container className="flex justify-between items-center px-5 w-80 md:w-32 py-3 rounded-lg bg-lightGrayishBlue ">
+                        <Container className="flex justify-between items-center px-5 w-80 md:w-32 py-2 rounded-lg bg-lightGrayishBlue ">
                           <Container className="flex items-center">
                             <Button disabled={count === 0 ? true : false} onClick={handleSubProduct}>
                               <Icon src="public/images/icon-minus.svg" />

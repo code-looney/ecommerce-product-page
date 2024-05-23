@@ -61,12 +61,12 @@ export default function App() {
   }
 
   return (
-    <Container>
+    <Container className="h-screen pb-[950px] outline">
       <Header />
       <Container className="hidden md:flex justify-center w-full px-[240px]">
         <Rule  className="md:w-full"/>
       </Container>
-      <Container className="w-full md:flex h-screen md:h-[550px] md:items-center justify-center md:gap-24">
+      <Container className="w-full md:flex h-screen md:h-[550px] md:items-center justify-center md:gap-20">
         <Container className="md:w-96 w-full relative md:flex-col">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
           <Container className="absolute top-[45%] flex justify-between w-full px-3">
@@ -94,17 +94,17 @@ export default function App() {
                   <Container key={item.id} className="flex flex-col">
                     { console.log(crypto.randomUUID() )}
                     <Container>
-                      <Container className="px-5 flex justify-between w-full items-center mb-5">
+                      <Container className="px-5 flex justify-between w-full items-center mb-5 md:flex-col md:justify-start md:items-start">
                         <Container className="flex gap-5 items-center">
                           <BasePrice className="font-bold text-[24px]">{`$${(item.discount ? item.price * item.discount : item.price).toFixed(2)}`}</BasePrice>
                           <Sale className="text-orange bg-paleOrange rounded-md px-2 font-bold text-[14px]">{item.sale}%</Sale>
                         </Container>
-                        <FullPrice className="line-through text-grayishBlue font-bold">${item.price.toFixed(2)}</FullPrice>
+                        <FullPrice className="line-through text-grayishBlue font-bold md:text-[12px]">${item.price.toFixed(2)}</FullPrice>
                       </Container>
                     </Container>
-                    <Container className="flex flex-col gap-3">
+                    <Container className="flex flex-col gap-3 md:flex-row">
                       <Container className="w-full flex justify-center">
-                        <Container className="flex justify-between items-center px-5 w-80 py-3 rounded-lg bg-lightGrayishBlue ">
+                        <Container className="flex justify-between items-center px-5 w-80 md:w-32 py-3 rounded-lg bg-lightGrayishBlue ">
                           <Container className="flex items-center">
                             <Button disabled={count === 0 ? true : false} onClick={handleSubProduct}>
                               <Icon src="public/images/icon-minus.svg" />
@@ -119,7 +119,7 @@ export default function App() {
                         </Container>
                       </Container>
                         <Container className="flex justify-center text-white font-bold">
-                          <Button className="flex gap-3 items-center bg-orange w-80 justify-center py-3 rounded-lg"><HiOutlineShoppingCart className="" />Add to cart</Button>
+                          <Button className="flex gap-3 items-center bg-orange w-80 md:w-60 justify-center py-3 rounded-lg"><HiOutlineShoppingCart className="" />Add to cart</Button>
                         </Container>
                         </Container>
                     </Container>

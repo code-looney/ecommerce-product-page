@@ -61,7 +61,7 @@ export default function App() {
   }
 
   return (
-    <Container className="h-screen pb-[950px] md:pb-0 outline">
+    <Container className="h-screen pb-[950px] md:pb-0">
       <Header />
       <Container className="hidden md:flex justify-center w-full px-[240px]">
         <Rule  className="md:w-full"/>
@@ -69,6 +69,12 @@ export default function App() {
       <Container className="w-full md:flex h-screen md:h-[550px] md:items-center justify-center md:gap-20">
         <Container className="md:w-96 w-full relative md:flex-col">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
+          <Container className="hidden md:flex flex-row  outline justify-between">
+            <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-1-thumbnail.jpg"></Thumbnail></Button>
+            <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-2-thumbnail.jpg"></Thumbnail></Button>
+            <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-3-thumbnail.jpg"></Thumbnail></Button>
+            <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-4-thumbnail.jpg"></Thumbnail></Button>
+          </Container>
           <Container className="absolute top-[45%] flex justify-between w-full px-3">
             <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full md:hidden">
               <ButtonIcon disabled={image === 1 ? true : false} onClick={hamdlePrevImageClick} className="bg-white w-3 h-4 flex items-center justify-center rounded-full" classnameiconbtn="w-full h-full rounded-full flex justify-center items-center" src="public/images/icon-previous.svg" />

@@ -66,7 +66,7 @@ export default function App() {
       <Container className="hidden md:flex justify-center w-full px-[240px]">
         <Rule  className="md:w-full"/>
       </Container>
-      <Container className="w-full md:flex h-screen md:h-[550px] md:items-center justify-center md:gap-20">
+      <Container className="w-full md:flex md:h-[550px] md:items-center justify-center md:gap-20">
         <Container className="md:w-96 w-full relative md:flex-col">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
           <Container className="hidden md:flex flex-row  outline justify-between">
@@ -87,11 +87,11 @@ export default function App() {
         <Container className="flex justify-center">
           <Container>
             <Container className="h-[250px] md:flex flex-col items-center pt-5 md:justify-center">
-              <Container className="px-5 w-full flex flex-col gap-3 pb-5">
+              <Container className="px-5 w-full flex-col gap-3 pb-5">
                 <Title className="uppercase font-bold text-[14px] text-orange hsl(26, 100%, 55%)]">Sneaker Company</Title>
-                <Sub className="text-[32px] font-bold tracking-wide leading-9">Fall Limited Edition<br />Sneakers</Sub>
-                <Paragraph className="text-darkGrayish text-[14px] tracking-wider leading-6">These low-profile sneakers are your perfect <br /> casual wear companion. Featuring a
-                  durable <br /> rubber outer sole, they’ll withstand everything <br /> the weather can offer.</Paragraph>
+                <Sub className="text-[32px] font-bold tracking-wide leading-9">Fall Limited Edition <br className="hidden md:block" />Sneakers</Sub>
+                <Paragraph className="text-darkGrayish text-[14px] tracking-wider leading-6">These low-profile sneakers are your perfect <br className="hidden md:block" /> casual wear companion. Featuring a
+                  durable <br className="hidden md:block" /> rubber outer sole, they’ll withstand everything <br className="hidden md:block" /> the weather can offer.</Paragraph>
               </Container>
               <Container className="flex flex-col">
               {price && price.map(item => {

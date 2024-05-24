@@ -108,9 +108,9 @@ export default function App() {
                         <FullPrice className="line-through text-grayishBlue font-bold md:text-[12px]">${item.price.toFixed(2)}</FullPrice>
                       </Container>
                     </Container>
-                    <Container className="flex flex-col gap-3 md:flex-row pt-0 md:pt-3">
+                    <Container className="flex w-full  flex-col gap-3 md:flex-row pt-0 md:pt-3 outline">
                       <Container className="w-full flex justify-center">
-                        <Container className="flex justify-between items-center px-5 w-80 md:w-32 py-2 rounded-lg bg-lightGrayishBlue ">
+                        <Container className="flex justify-between items-center px-5 w-full md:w-32 py-2 rounded-lg bg-lightGrayishBlue  mx-5">
                           <Container className="flex items-center">
                             <Button disabled={count === 0 ? true : false} onClick={handleSubProduct}>
                               <Icon src="public/images/icon-minus.svg" />
@@ -124,8 +124,8 @@ export default function App() {
                           </Container>
                         </Container>
                       </Container>
-                        <Container className="flex justify-center text-white font-bold">
-                          <Button className="flex gap-3 items-center bg-orange w-80 md:w-60 justify-center py-3 rounded-lg"><HiOutlineShoppingCart className="" />Add to cart</Button>
+                        <Container className="flex justify-center text-white font-bold w-full">
+                          <Button className="flex gap-3 items-center bg-orange w-full mx-5 md:w-60 justify-center py-3 rounded-lg"><HiOutlineShoppingCart className="" />Add to cart</Button>
                         </Container>
                         </Container>
                     </Container>

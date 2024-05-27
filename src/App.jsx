@@ -66,16 +66,16 @@ export default function App() {
       <Container className="hidden md:flex justify-center w-full px-[240px]">
         <Rule  className="md:w-full"/>
       </Container>
-      <Container className="w-full md:flex md:h-[550px] md:items-center justify-center md:gap-20">
-        <Container className="md:w-96 w-full relative md:flex-col">
+      <Container className="w-full md:flex md:h-[650px] md:items-center justify-center md:gap-20">
+        <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px]">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
-          <Container className="hidden md:flex flex-row  outline justify-between">
+          <Container className="hidden md:flex flex-row justify-between">
             <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-1-thumbnail.jpg"></Thumbnail></Button>
             <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-2-thumbnail.jpg"></Thumbnail></Button>
             <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-3-thumbnail.jpg"></Thumbnail></Button>
             <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-4-thumbnail.jpg"></Thumbnail></Button>
           </Container>
-          <Container className="absolute top-[45%] flex justify-between w-full px-3">
+          <Container className="absolute md:hidden top-[45%] flex justify-between w-full px-3 oultine">
             <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full md:hidden">
               <ButtonIcon disabled={image === 1 ? true : false} onClick={hamdlePrevImageClick} className="bg-white w-3 h-4 flex items-center justify-center rounded-full" classnameiconbtn="w-full h-full rounded-full flex justify-center items-center" src="public/images/icon-previous.svg" />
             </Container>
@@ -87,11 +87,13 @@ export default function App() {
         <Container className="flex justify-center">
           <Container>
             <Container className="h-[250px] md:flex flex-col items-center pt-5 md:justify-center">
-              <Container className="px-5 w-full flex-col gap-3 pb-5">
-                <Title className="uppercase font-bold text-[14px] text-orange hsl(26, 100%, 55%)]">Sneaker Company</Title>
-                <Sub className="text-[32px] font-bold tracking-wide leading-9">Fall Limited Edition <br className="hidden md:block" />Sneakers</Sub>
+              <Container className="px-5 w-full flex-col pb-5 md:flex gap-3 flex">
+                  <Title className="uppercase font-bold text-[14px] text-orange hsl(26, 100%, 55%)]">Sneaker Company</Title>
+                <Container className="flex-col flex gap-5 md:gap-7 md:flex">
+                  <Sub className="text-[32px] font-bold tracking-wide leading-9">Fall Limited Edition <br className="hidden md:block" />Sneakers</Sub>
                 <Paragraph className="text-darkGrayish text-[14px] tracking-wider leading-6">These low-profile sneakers are your perfect <br className="hidden md:block" /> casual wear companion. Featuring a
                   durable <br className="hidden md:block" /> rubber outer sole, they’ll withstand everything <br className="hidden md:block" /> the weather can offer.</Paragraph>
+                </Container>
               </Container>
               <Container className="flex flex-col">
               {price && price.map(item => {
@@ -108,7 +110,7 @@ export default function App() {
                         <FullPrice className="line-through text-grayishBlue font-bold md:text-[12px]">${item.price.toFixed(2)}</FullPrice>
                       </Container>
                     </Container>
-                    <Container className="flex w-full  flex-col gap-3 md:flex-row pt-0 md:pt-3 outline">
+                    <Container className="flex w-full  flex-col gap-3 md:flex-row pt-0 md:pt-3">
                       <Container className="w-full flex justify-center">
                         <Container className="flex justify-between items-center px-5 w-full md:w-32 py-2 rounded-lg bg-lightGrayishBlue  mx-5">
                           <Container className="flex items-center">

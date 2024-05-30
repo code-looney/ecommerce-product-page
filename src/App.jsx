@@ -24,7 +24,7 @@ export default function App() {
   const [prevImage, setPrevImage] = useState(null)
   const [disable, setDisable] = useState(false)
   const [image, setImage] = useState(1)
-
+  const [selectImage, setSelectImage] = useState(1)
 
   useEffect(() => {
     fetch("./data.json")
@@ -34,6 +34,14 @@ export default function App() {
     })
   }, [])
 
+  useEffect(() => {
+    fetch("selectImage.json")
+    .then(res => res.json())
+    .then(data => {
+      setSelectImage(data)
+    })
+  }, [])
+  
   function handleAddProduct() {
       setCount(prev => prev + 1)
   }
@@ -60,6 +68,7 @@ export default function App() {
       setImage(image - 1)
   }
 
+  
   return (
     <Container className="h-screen pb-[950px] md:pb-0">
       <Header />
@@ -70,10 +79,11 @@ export default function App() {
         <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px]">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
           <Container className="hidden md:flex flex-row justify-between">
-            <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-1-thumbnail.jpg"></Thumbnail></Button>
-            <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-2-thumbnail.jpg"></Thumbnail></Button>
-            <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-3-thumbnail.jpg"></Thumbnail></Button>
-            <Button className="w-20"><Thumbnail className="rounded-lg" src="public/images/image-product-4-thumbnail.jpg"></Thumbnail></Button>
+            {selectImage && selectImage.map((item) => {
+              return (
+                <Container>{item}</Container>
+              )
+            })}
           </Container>
           <Container className="absolute md:hidden top-[45%] flex justify-between w-full px-3 oultine">
             <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full md:hidden">
@@ -100,7 +110,7 @@ export default function App() {
                  // dynamic id plaatsen / leren
                return (
                   <Container key={item.id} className="flex flex-col">
-                    { console.log(crypto.randomUUID() )}
+                    {/* { console.log(crypto.randomUUID() )} */}
                     <Container>
                       <Container className="px-5 flex justify-between w-full items-center mb-5 md:flex-col md:justify-start md:items-start">
                         <Container className="flex gap-5 items-center">

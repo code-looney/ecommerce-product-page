@@ -24,7 +24,7 @@ export default function App() {
   const [prevImage, setPrevImage] = useState(null)
   const [disable, setDisable] = useState(false)
   const [image, setImage] = useState(1)
-  const [selectImage, setSelectImage] = useState(1)
+  const [selectImage, setSelectImage] = useState(null)
 
   useEffect(() => {
     fetch("./data.json")
@@ -81,7 +81,7 @@ export default function App() {
           <Container className="hidden md:flex flex-row justify-between">
             {selectImage && selectImage.map((item) => {
               return (
-                <Container>{item}</Container>
+                <Button><Thumbnail src={`public/images/image-product-${item.image}-thumbnail.jpg`} /></Button>
               )
             })}
           </Container>

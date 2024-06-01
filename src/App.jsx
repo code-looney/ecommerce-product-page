@@ -41,6 +41,20 @@ export default function App() {
       setSelectImage(data)
     })
   }, [])
+
+  function handleSelectedImage(id) {
+    if (selectImage[0].image === id) {
+      console.log(selectImage[0].image)
+      setImage(1);
+    } else if (selectImage[1].image === id) {
+      console.log('test')
+      setImage(2);
+    } else if (selectImage[2].image === id) {
+      setImage(3)
+    } else if (selectImage[3].image === id) {
+      setImage(4)
+    }
+  } 
   
   function handleAddProduct() {
       setCount(prev => prev + 1)
@@ -78,10 +92,14 @@ export default function App() {
       <Container className="w-full md:flex md:h-[650px] md:items-center justify-center md:gap-20">
         <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px]">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
-          <Container className="hidden md:flex flex-row justify-between">
+          <Container className="hidden md:flex flex-row justify-between gap-4">
             {selectImage && selectImage.map((item) => {
               return (
-                <Button><Thumbnail src={`public/images/image-product-${item.image}-thumbnail.jpg`} /></Button>
+                <Container key={item.id}>
+                  <Button onClick={() => handleSelectedImage(item.id)}>
+                    <Thumbnail className="rounded-xl" src={`public/images/image-product-${item.image}-thumbnail.jpg`} />
+                  </Button>
+                  </Container>
               )
             })}
           </Container>
@@ -102,7 +120,7 @@ export default function App() {
                 <Container className="flex-col flex gap-5 md:gap-7 md:flex">
                   <Sub className="text-[32px] font-bold tracking-wide leading-9">Fall Limited Edition <br className="hidden md:block" />Sneakers</Sub>
                 <Paragraph className="text-darkGrayish text-[14px] tracking-wider leading-6">These low-profile sneakers are your perfect <br className="hidden md:block" /> casual wear companion. Featuring a
-                  durable <br className="hidden md:block" /> rubber outer sole, they’ll withstand everything <br className="hidden md:block" /> the weather can offer.</Paragraph>
+                  durable <br className="hidden md:block" />rubber outer sole, they’ll withstand everything <br className="hidden md:block" /> the weather can offer.</Paragraph>
                 </Container>
               </Container>
               <Container className="flex flex-col">

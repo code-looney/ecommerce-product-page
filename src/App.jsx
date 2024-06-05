@@ -141,7 +141,7 @@ export default function App() {
         <Rule  className="md:w-full"/>
       </Container>
       <Container className="w-full md:flex md:h-[650px] md:items-center justify-center md:gap-20">
-        <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px]">
+        <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[520px]">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
           <Container className="hidden md:flex flex-row justify-between gap-4">
             {selectImage && selectImage.map((item, index) => {
@@ -150,7 +150,7 @@ export default function App() {
                   {/* dit zih de thumbnail border colors...*/}
                   <Button className={`rounded-xl ${item.id === 1 ? borderColor1 : ""} ${item.id === 2 ? borderColor2 : ""} ${item.id === 3 ? borderColor3 : ""} ${item.id === 4 ? borderColor4 : ""}`} onClick={() => handleSelectedImage(item.id, index)}>
                   {/* dit zijn de thumbnail opacities...*/}
-                        <Thumbnail className={`rounded-xl ${item.id === 1 ? opacity1 : ""} ${item.id === 2 ? opacity2 : ""} ${item.id === 3 ? opacity3 : ""} ${item.id === 4 ? opacity4 : ""}`} src={`public/images/image-product-${item.image}-thumbnail.jpg`} />
+                        <Thumbnail className={`rounded-xl hover:opacity-50 ${item.id === 1 ? opacity1 : ""} ${item.id === 2 ? opacity2 : ""} ${item.id === 3 ? opacity3 : ""} ${item.id === 4 ? opacity4 : ""}`} src={`public/images/image-product-${item.image}-thumbnail.jpg`} />
                   </Button>
                   </Container>
               )

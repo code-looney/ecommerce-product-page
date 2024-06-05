@@ -25,10 +25,15 @@ export default function App() {
   const [disable, setDisable] = useState(false)
   const [image, setImage] = useState(1)
   const [selectImage, setSelectImage] = useState(null)
-  const [opacity1, setOpacity1] = useState(null)
+  const [opacity1, setOpacity1] = useState("opacity-30")
   const [opacity2, setOpacity2] = useState(null)
   const [opacity3, setOpacity3] = useState(null)
   const [opacity4, setOpacity4] = useState(null)
+
+  const [borderColor1, setBorderColor1] = useState("outline outline-orange")
+  const [borderColor2, setBorderColor2] = useState(null)
+  const [borderColor3, setBorderColor3] = useState(null)
+  const [borderColor4, setBorderColor4] = useState(null)
 
   useEffect(() => {
     fetch("./data.json")
@@ -47,16 +52,51 @@ export default function App() {
   }, [])
 
   function handleSelectedImage(id) {
-    if (selectImage[0].image === id && selectImage[0].opacity1 === 1) {
-      // setOpacity1("opacity-30")
+    if (selectImage[0].image === id) {
+      setOpacity1("opacity-30") // dit is de thumbnail opacities...
+      setOpacity2("")
+      setOpacity3("")
+      setOpacity4("")
+
+      setBorderColor1("outline outline-orange"); // dit is de thumbnail border color...
+      setBorderColor2("");
+      setBorderColor3("");
+      setBorderColor4("");
       setImage(1);
-    } else if (selectImage[1].image === id && selectImage[1].opacity2 === 2) {
+    } else if (selectImage[1].image === id) {
       setOpacity1("")
       setOpacity2("opacity-30")
+      setOpacity3("")
+      setOpacity4("")
+
+      setBorderColor1("");
+      setBorderColor2("outline outline-orange");
+      setBorderColor3("");
+      setBorderColor4("");
+
       setImage(2);
     } else if (selectImage[2].image === id) {
+      setOpacity1("")
+      setOpacity2("")
+      setOpacity3("opacity-30")
+      setOpacity4("")
+
+      setBorderColor1("");
+      setBorderColor2("");
+      setBorderColor3("outline outline-orange");
+      setBorderColor4("");
+
       setImage(3)
     } else if (selectImage[3].image === id) {
+      setOpacity1("")
+      setOpacity2("")
+      setOpacity3("")
+      setOpacity4("opacity-30")
+
+      setBorderColor1("");
+      setBorderColor2("");
+      setBorderColor3("");
+      setBorderColor4("outline outline-orange");
       setImage(4)
     }
   } 
@@ -67,7 +107,7 @@ export default function App() {
   //       setOpacity("opacity-30")
   //     }
   // } 
-  
+   
   function handleAddProduct() {
       setCount(prev => prev + 1)
   }
@@ -93,7 +133,6 @@ export default function App() {
    function hamdlePrevImageClick() {
       setImage(image - 1)
   }
-
   
   return (
     <Container className="h-screen pb-[950px] md:pb-0">
@@ -108,8 +147,10 @@ export default function App() {
             {selectImage && selectImage.map((item, index) => {
               return (
                 <Container key={item.id}>
-                  <Button onClick={() => handleSelectedImage(item.id, index)}>
-                        <Thumbnail className={`rounded-xl ${opacity1} ${opacity2}`} src={`public/images/image-product-${item.image}-thumbnail.jpg`} />
+                  {/* dit zih de thumbnail border colors...*/}
+                  <Button className={`rounded-xl ${item.id === 1 ? borderColor1 : ""} ${item.id === 2 ? borderColor2 : ""} ${item.id === 3 ? borderColor3 : ""} ${item.id === 4 ? borderColor4 : ""}`} onClick={() => handleSelectedImage(item.id, index)}>
+                  {/* dit zijn de thumbnail opacities...*/}
+                        <Thumbnail className={`rounded-xl ${item.id === 1 ? opacity1 : ""} ${item.id === 2 ? opacity2 : ""} ${item.id === 3 ? opacity3 : ""} ${item.id === 4 ? opacity4 : ""}`} src={`public/images/image-product-${item.image}-thumbnail.jpg`} />
                   </Button>
                   </Container>
               )

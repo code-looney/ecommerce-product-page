@@ -25,6 +25,10 @@ export default function App() {
   const [disable, setDisable] = useState(false)
   const [image, setImage] = useState(1)
   const [selectImage, setSelectImage] = useState(null)
+  const [opacity1, setOpacity1] = useState(null)
+  const [opacity2, setOpacity2] = useState(null)
+  const [opacity3, setOpacity3] = useState(null)
+  const [opacity4, setOpacity4] = useState(null)
 
   useEffect(() => {
     fetch("./data.json")
@@ -43,11 +47,12 @@ export default function App() {
   }, [])
 
   function handleSelectedImage(id) {
-    if (selectImage[0].image === id) {
-      console.log(selectImage[0].image)
+    if (selectImage[0].image === id && selectImage[0].opacity1 === 1) {
+      // setOpacity1("opacity-30")
       setImage(1);
-    } else if (selectImage[1].image === id) {
-      console.log('test')
+    } else if (selectImage[1].image === id && selectImage[1].opacity2 === 2) {
+      setOpacity1("")
+      setOpacity2("opacity-30")
       setImage(2);
     } else if (selectImage[2].image === id) {
       setImage(3)
@@ -55,6 +60,13 @@ export default function App() {
       setImage(4)
     }
   } 
+
+
+  //   function handleOpacityClick(id) {
+  //     if (selectImage[0].opacity1 === id) {
+  //       setOpacity("opacity-30")
+  //     }
+  // } 
   
   function handleAddProduct() {
       setCount(prev => prev + 1)
@@ -93,11 +105,11 @@ export default function App() {
         <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px]">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
           <Container className="hidden md:flex flex-row justify-between gap-4">
-            {selectImage && selectImage.map((item) => {
+            {selectImage && selectImage.map((item, index) => {
               return (
                 <Container key={item.id}>
-                  <Button onClick={() => handleSelectedImage(item.id)}>
-                    <Thumbnail className="rounded-xl" src={`public/images/image-product-${item.image}-thumbnail.jpg`} />
+                  <Button onClick={() => handleSelectedImage(item.id, index)}>
+                        <Thumbnail className={`rounded-xl ${opacity1} ${opacity2}`} src={`public/images/image-product-${item.image}-thumbnail.jpg`} />
                   </Button>
                   </Container>
               )

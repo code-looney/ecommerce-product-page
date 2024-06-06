@@ -180,7 +180,7 @@ export default function App() {
               </Container>
               <Container className="flex flex-col">
               {price && price.map(item => {
-                 // dynamic id plaatsen / leren !!!
+                 // dynamic id plaatsen / leren !
 
                return (
                   <Container key={item.id} className="flex flex-col">

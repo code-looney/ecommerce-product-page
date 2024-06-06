@@ -15,6 +15,7 @@ import Icon from "./components/Icon"
 import Button from "./components/Button"
 import Thumbnail from "./components/Thumbnail"
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import Cart from "./components/Cart"
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -143,6 +144,7 @@ export default function App() {
       <Container className="w-full md:flex md:h-[650px] md:items-center justify-center md:gap-20">
         <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[520px]">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
+          <Cart className="absolute outline w-[100%]">cart</Cart>
           <Container className="hidden md:flex flex-row justify-between gap-4">
             {selectImage && selectImage.map((item, index) => {
               return (

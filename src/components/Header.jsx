@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Container from './Container'
 import Logo from './Logo'
-import Cart from './Cart'
+import CartIcon from './CartIcon'
 import Profile from './Profile'
 import { Link } from 'react-router-dom'
 import HumburgerMenu from './HumburgerMenu'
@@ -60,7 +60,7 @@ const Header = () => {
       <Container className={`flex relative ${zIndex}`}>
         <Container className="flex items-center gap-5">
           <Container className="w-4">
-            <Cart src="public/images/icon-cart.svg" />
+            <CartIcon src="public/images/icon-cart.svg" />
           </Container>
           <Container className="w-6 md:w-10">
             <Profile src="public/images/image-avatar.png" />

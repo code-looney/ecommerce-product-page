@@ -1,10 +1,11 @@
 import React from 'react'
+import Container from './Container'
 
 const Cart = (props) => {
-    const {...rest} = props;
+    const {children, ...rest} = props;
 
   return (
-    <button><img {...rest} /></button>
+    <Container {...rest}>{children}</Container>
   )
 }
 

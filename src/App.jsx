@@ -142,7 +142,7 @@ export default function App() {
         <Rule  className="md:w-full"/>
       </Container>
       <Container className="w-full md:flex md:h-[650px] md:items-center justify-center md:gap-20">
-        <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[520px]md:p-0">
+        <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[520px] md:p-0">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
           <Cart className="absolute z-20 outline h-[95%] w-[95%] justify-center items-center flex inset-0 m-auto bg-white md:hidden">cart</Cart>
           <Container className="hidden md:flex flex-row justify-between gap-4">

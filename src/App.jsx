@@ -142,9 +142,9 @@ export default function App() {
         <Rule  className="md:w-full"/>
       </Container>
       <Container className="w-full md:flex md:h-[650px] md:items-center justify-center md:gap-20">
-        <Container className=" first-letter:md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[520px]">
+        <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[520px]">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
-          <Cart className="absolute outline h-full w-full justify-center items-center flex top-0">cart</Cart>
+          <Cart className="absolute outline h-full w-full justify-center items-center flex top-0 md:hidden">cart</Cart>
           <Container className="hidden md:flex flex-row justify-between gap-4">
             {selectImage && selectImage.map((item, index) => {
               return (
@@ -158,7 +158,7 @@ export default function App() {
               )
             })}
           </Container>
-          <Container className="absolute md:hidden h-full w-full justify-between items-center flex top-0 px-3 oultine">
+          <Container className="absolute md:hidden outline h-full justify-between items-center flex top-0 w-full px-3 oultine">
             <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full md:hidden">
               <ButtonIcon disabled={image === 1 ? true : false} onClick={hamdlePrevImageClick} className="bg-white w-3 h-4 flex items-center justify-center rounded-full" classnameiconbtn="w-full h-full rounded-full flex justify-center items-center" src="public/images/icon-previous.svg" />
             </Container>

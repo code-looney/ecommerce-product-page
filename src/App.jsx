@@ -146,13 +146,13 @@ export default function App() {
         <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px] md:p-0">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] md:h-[380px] object-cover" />
           {/* check if the cart w/h dimensions are correct */}
-          <Cart className="absolute z-20 h-[75%] w-[95%] justify-start items-center flex-col flex top-[7%] left-[2.5%] m-auto bg-white md:hidden rounded-lg translate-y-[-6%]">
-            <Container className="w-full flex ">
-              <Container className="w-full outline relative">
-                <Title className="pl-5 pt-5">Cart</Title>
-                <Rule className="w-full" />
+          <Cart className="absolute z-20 h-[75%] w-[95%] justify-start flex-col flex top-[7%] left-[2.5%] m-auto bg-white md:hidden rounded-lg translate-y-[-6%]">
+            <Container className="w-full flex flex-col justify-center gap-5 pt-5">
+              <Container className="w-full px-5 flex justify-between items-center">
+                <Title>Cart</Title>
+                <RxCross1  />
               </Container>
-              <RxCross1 className="outline absolute right-0 flex items-center justify-center" />
+                <Rule className="w-full" />
             </Container>
             <Container className="h-full w-full flex justify-center items-center"><Sub>Your cart is empty.</Sub></Container>
           </Cart>

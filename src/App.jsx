@@ -102,7 +102,6 @@ export default function App() {
     }
   } 
 
-
   //   function handleOpacityClick(id) {
   //     if (selectImage[0].opacity1 === id) {
   //       setOpacity("opacity-30")
@@ -142,9 +141,16 @@ export default function App() {
         <Rule  className="md:w-full"/>
       </Container>
       <Container className="w-full md:flex md:h-[650px] md:items-center justify-center md:gap-20">
-        <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[520px] md:p-0">
-          <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] object-cover" />
-          <Cart className="absolute z-20 outline h-[95%] w-[95%] justify-center items-center flex inset-0 m-auto bg-white md:hidden">cart</Cart>
+        <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px] md:p-0">
+          <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] md:h-[380px] object-cover" />
+          {/* check if the dimensions are correct */}
+          <Cart className="absolute z-20 outline h-[75%] w-[95%] justify-start items-center flex-col flex top-[7%] left-[2.5%] m-auto bg-white md:hidden rounded-lg translate-y-[-6%]">
+            <Container className="w-full flex flex-col gap-5">
+              <Title className="pl-5 pt-5">Cart</Title>
+              <Rule className="w-full" />
+            </Container>
+            <Container className="h-full w-full flex justify-center items-center outline"><Sub>Your cart is empty.</Sub></Container>
+          </Cart>
           <Container className="hidden md:flex flex-row justify-between gap-4">
             {selectImage && selectImage.map((item, index) => {
               return (

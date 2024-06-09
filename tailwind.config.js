@@ -15,7 +15,6 @@ export default {
         "darkGrayish": "hsl(219, 9%, 45%)",
         "grayishBlue": "hsl(220, 14%, 75%)",
         "lightGrayishBlue": "hsl(223, 64%, 98%)",
-        "opacity1": "opacity-30"
       }
     },
   },

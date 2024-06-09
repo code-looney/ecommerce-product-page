@@ -17,18 +17,21 @@ import Thumbnail from "./components/Thumbnail"
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import CartBasket from "./components/CartBasket"
 import { RxCross1 } from "react-icons/rx";
+import Amount from "./components/Amount"
 
 
 export default function App() {
   const [count, setCount] = useState(0);
   const [price, setPrice] = useState(null)
+  const [amount, setAmount] = useState(null)
+
   const [discount, setDiscount] = useState(50)
   const [nextImage, setNextImage] = useState(null)
   const [prevImage, setPrevImage] = useState(null)
   const [disable, setDisable] = useState(false)
   const [image, setImage] = useState(1)
   const [selectImage, setSelectImage] = useState(null)
-  const [removeCartBasket, setRemoveCartBasket] = useState('hidden');
+  const [removeCartBasket, setRemoveCartBasket] = useState('block');
 
   const [opacity1, setOpacity1] = useState("opacity-30")
   const [opacity2, setOpacity2] = useState(null)
@@ -147,17 +150,35 @@ export default function App() {
       </Container>
       <Container className="w-full md:flex md:h-[650px] md:items-center justify-center md:gap-20">
         <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px] md:p-0">
-          <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] md:h-[380px] object-cover" />
+          <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[330px] md:h-[380px] object-cover" />
           {/* check if the cart w/h dimensions are correct */}
-          <CartBasket className={`${removeCartBasket} absolute z-20 h-[85%] w-[95%] justify-start flex-col flex top-[7%] left-[2.5%] m-auto bg-white md:hidden rounded-lg translate-y-[-6%]`}>
-            <Container className="w-full flex flex-col justify-center gap-5 pt-5">
-              <Container className="w-full px-5 flex justify-between items-center">
-                <Title>Cart</Title>
-                <Button onClick={() => setRemoveCartBasket('hidden')}><RxCross1 /></Button>
+          <CartBasket className={`${removeCartBasket} absolute z-20 h-[85%] w-[95%] justify-start flex-col flex top-[7%] left-[2.5%] m-auto bg-white md:hidden rounded-lg translate-y-[-5%]`}>
+            <Container className={`flex-col flex-1 flex`}>
+              <Container className="w-full flex flex-col justify-center gap-5 pt-5">
+                <Container className="w-full px-5 flex justify-between items-center">
+                  <Title>Cart</Title>
+                  <Button onClick={() => setRemoveCartBasket('hidden')}><Icon src="public/images/icon-close.svg" /></Button>
+                </Container>
+                  <Rule className="w-full" />
               </Container>
-                <Rule className="w-full" />
+              <Container className="h-full w-full flex flex-col justify-center items-center px-6 gap-7"><Sub className="hidden">Your cart is empty.</Sub>
+              <Container className="flex gap-4 items-center w-full"> {/* This is the basket product section */}
+                <Thumbnail className="w-16 rounded-md" src="public/images/image-product-1-thumbnail.jpg" />
+                <Container><Sub className="text-darkGrayish">Fall Limited Edition Sneakers</Sub>
+                {price && price.map(item => { {/* This is the cartbasket product details */}
+                  return (
+                    <Container key={item.id} className="flex gap-1"><BasePrice  className="text-darkGrayish">{`$${(item.discount ? item.price * item.discount : item.price).toFixed(2)}`}</BasePrice>
+                    <Counter>x {count}</Counter>
+                    <Amount>{`$${(item.discount ? item.price * item.discount : item.price).toFixed(2) * count}`}</Amount> {/* refactor het optellen van de price naar een state amount */}
+                    </Container>
+                  )
+                })}
+                </Container>
+                <Container><Icon src="public/images/icon-delete.svg" /></Container>
+              </Container>
+              <Container className="w-full flex justify-center"><Button className="bg-orange w-full py-4 rounded-lg text-white">Checkout</Button></Container>
+              </Container>
             </Container>
-            <Container className="h-full w-full flex justify-center items-center"><Sub>Your cart is empty.</Sub></Container>
           </CartBasket>
           <Container className="hidden md:flex flex-row justify-between gap-4">
             {selectImage && selectImage.map((item, index) => {
@@ -172,7 +193,7 @@ export default function App() {
               )
             })}
           </Container>
-          <Container className="absolute z-10 md:hidden outline h-full justify-between items-center flex top-0 w-full px-3">
+          <Container className="absolute z-10 md:hidden h-full justify-between items-center flex top-0 w-full px-3">
             <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full md:hidden">
               <ButtonIcon disabled={image === 1 ? true : false} onClick={hamdlePrevImageClick} className="bg-white w-3 h-4 flex items-center justify-center rounded-full" classnameiconbtn="w-full h-full rounded-full flex justify-center items-center" src="public/images/icon-previous.svg" />
             </Container>

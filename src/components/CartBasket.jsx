@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from './Container'
 
-const Cart = (props) => {
+const CartBasket = (props) => {
     const {children, ...rest} = props;
 
   return (
@@ -9,4 +9,4 @@ const Cart = (props) => {
   )
 }
 
-export default Cart
+export default CartBasket

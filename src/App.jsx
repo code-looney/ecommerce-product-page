@@ -15,7 +15,7 @@ import Icon from "./components/Icon"
 import Button from "./components/Button"
 import Thumbnail from "./components/Thumbnail"
 import { HiOutlineShoppingCart } from "react-icons/hi";
-import Cart from "./components/Cart"
+import CartBasket from "./components/CartBasket"
 import { RxCross1 } from "react-icons/rx";
 
 
@@ -28,6 +28,8 @@ export default function App() {
   const [disable, setDisable] = useState(false)
   const [image, setImage] = useState(1)
   const [selectImage, setSelectImage] = useState(null)
+  const [removeCartBasket, setRemoveCartBasket] = useState('hidden');
+
   const [opacity1, setOpacity1] = useState("opacity-30")
   const [opacity2, setOpacity2] = useState(null)
   const [opacity3, setOpacity3] = useState(null)
@@ -37,6 +39,7 @@ export default function App() {
   const [borderColor2, setBorderColor2] = useState(null)
   const [borderColor3, setBorderColor3] = useState(null)
   const [borderColor4, setBorderColor4] = useState(null)
+
 
   useEffect(() => {
     fetch("./data.json")
@@ -138,24 +141,24 @@ export default function App() {
   
   return (
     <Container className="h-screen pb-[950px] md:pb-0">
-      <Header />
+      <Header removeCartBasket={removeCartBasket} setRemoveCartBasket={setRemoveCartBasket} />
       <Container className="hidden md:flex justify-center w-full px-[240px]">
-        <Rule  className="md:w-full"/>
+        <Rule className="md:w-full"/>
       </Container>
       <Container className="w-full md:flex md:h-[650px] md:items-center justify-center md:gap-20">
         <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px] md:p-0">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[400px] md:h-[380px] object-cover" />
           {/* check if the cart w/h dimensions are correct */}
-          <Cart className="absolute z-20 h-[75%] w-[95%] justify-start flex-col flex top-[7%] left-[2.5%] m-auto bg-white md:hidden rounded-lg translate-y-[-6%]">
+          <CartBasket className={`${removeCartBasket} absolute z-20 h-[85%] w-[95%] justify-start flex-col flex top-[7%] left-[2.5%] m-auto bg-white md:hidden rounded-lg translate-y-[-6%]`}>
             <Container className="w-full flex flex-col justify-center gap-5 pt-5">
               <Container className="w-full px-5 flex justify-between items-center">
                 <Title>Cart</Title>
-                <RxCross1  />
+                <Button onClick={() => setRemoveCartBasket('hidden')}><RxCross1 /></Button>
               </Container>
                 <Rule className="w-full" />
             </Container>
             <Container className="h-full w-full flex justify-center items-center"><Sub>Your cart is empty.</Sub></Container>
-          </Cart>
+          </CartBasket>
           <Container className="hidden md:flex flex-row justify-between gap-4">
             {selectImage && selectImage.map((item, index) => {
               return (

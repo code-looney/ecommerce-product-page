@@ -31,7 +31,7 @@ export default function App() {
   const [disable, setDisable] = useState(false)
   const [image, setImage] = useState(1)
   const [selectImage, setSelectImage] = useState(null)
-  const [removeCartBasket, setRemoveCartBasket] = useState('block');
+  const [removeCartBasket, setRemoveCartBasket] = useState('hidden');
 
   const [opacity1, setOpacity1] = useState("opacity-30")
   const [opacity2, setOpacity2] = useState(null)
@@ -110,12 +110,6 @@ export default function App() {
     }
   } 
 
-  //   function handleOpacityClick(id) {
-  //     if (selectImage[0].opacity1 === id) {
-  //       setOpacity("opacity-30")
-  //     }
-  // } 
-   
   function handleAddProduct() {
       setCount(prev => prev + 1)
   }
@@ -144,7 +138,7 @@ export default function App() {
   
   return (
     <Container className="h-screen pb-[950px] md:pb-0">
-      <Header removeCartBasket={removeCartBasket} setRemoveCartBasket={setRemoveCartBasket} />
+      <Header count={count} removeCartBasket={removeCartBasket} setRemoveCartBasket={setRemoveCartBasket} />
       <Container className="hidden md:flex justify-center w-full px-[240px]">
         <Rule className="md:w-full"/>
       </Container>
@@ -161,8 +155,9 @@ export default function App() {
                 </Container>
                   <Rule className="w-full" />
               </Container>
-              <Container className="h-full w-full flex flex-col justify-center items-center px-6 gap-7"><Sub className="hidden">Your cart is empty.</Sub>
-              <Container className="flex gap-4 items-center w-full"> {/* This is the basket product section */}
+              <Container className="h-full w-full flex flex-col justify-center items-center px-6 gap-7"><Sub className={`${count === 0 ? "block" : "hidden"}`}>Your cart is empty.</Sub>
+              {/* refactor the  empty */}
+              <Container className={`flex gap-4 items-center w-full ${count >= 1 ? "block" : "hidden"}`}> {/* This is the basket product section */}
                 <Thumbnail className="w-16 rounded-md" src="public/images/image-product-1-thumbnail.jpg" />
                 <Container><Sub className="text-darkGrayish">Fall Limited Edition Sneakers</Sub>
                 {price && price.map(item => { {/* This is the cartbasket product details */}
@@ -176,7 +171,8 @@ export default function App() {
                 </Container>
                 <Container><Icon src="public/images/icon-delete.svg" /></Container>
               </Container>
-              <Container className="w-full flex justify-center"><Button className="bg-orange w-full py-4 rounded-lg text-white">Checkout</Button></Container>
+              <Container className={`w-full flex justify-center ${count >= 1 ? "block" : "hidden"}`}><Button className="bg-orange w-full py-4 rounded-lg text-white">Checkout</Button></Container>
+              {/* refactor the checkout button */}
               </Container>
             </Container>
           </CartBasket>
@@ -184,7 +180,7 @@ export default function App() {
             {selectImage && selectImage.map((item, index) => {
               return (
                 <Container key={item.id}>
-                  {/* dit zih de thumbnail border colors...*/}
+                  {/* dit zijn de thumbnail border colors...*/}
                   <Button className={`rounded-xl ${item.id === 1 ? borderColor1 : ""} ${item.id === 2 ? borderColor2 : ""} ${item.id === 3 ? borderColor3 : ""} ${item.id === 4 ? borderColor4 : ""}`} onClick={() => handleSelectedImage(item.id, index)}>
                   {/* dit zijn de thumbnail opacities...*/}
                         <Thumbnail className={`rounded-xl hover:opacity-50 ${item.id === 1 ? opacity1 : ""} ${item.id === 2 ? opacity2 : ""} ${item.id === 3 ? opacity3 : ""} ${item.id === 4 ? opacity4 : ""}`} src={`public/images/image-product-${item.image}-thumbnail.jpg`} />
@@ -246,7 +242,9 @@ export default function App() {
                         </Container>
                       </Container>
                         <Container className="flex justify-center text-white font-bold w-full">
-                          <Button className="flex gap-3 items-center bg-orange w-full mx-5 md:w-60 justify-center py-3 rounded-lg"><HiOutlineShoppingCart className="" />Add to cart</Button>
+                          <Button onClick={() => count >= 1 ? setRemoveCartBasket('block') : setRemoveCartBasket('hidden')} className="flex gap-3 items-center bg-orange w-full mx-5 md:w-60 justify-center py-3 rounded-lg"><HiOutlineShoppingCart className="" />Add to cart</Button>
+
+                          {/* kom hier terug om de producten toe te voegen met the add button en niet per count */}
                         </Container>
                         </Container>
                     </Container>

@@ -8,7 +8,7 @@ import HumburgerMenu from './HumburgerMenu'
 import MobileMenu from './MobileMenu'
 import DeskMenu from './DeskMenu'
 
-const Header = ({removeCartBasket, setRemoveCartBasket}) => {
+const Header = ({removeCartBasket, setRemoveCartBasket, count}) => {
   const [toggle, setToggle] = useState('menu');
   const [menu, setMenu] = useState('hidden');
   const [shadow, setShadow] = useState('black');
@@ -70,7 +70,9 @@ const Header = ({removeCartBasket, setRemoveCartBasket}) => {
       <Container className={`flex relative ${zIndex}`}>
         <Container className="flex items-center gap-5">
           <Container className="w-4">
-            <CartIcon onClick={() => handleRemoveCartBasketClick()} src="public/images/icon-cart.svg" />
+            <CartIcon className="relative" onClick={() => handleRemoveCartBasketClick()} src="public/images/icon-cart.svg" />
+              <span className='absolute  text-[8px] px-2 text-white rounded-full bg-orange translate-x-[-10px] translate-y-[-3px]'>{count === 0 ? "" : count}</span>
+              {/* refactor the counter icon basket */}
           </Container>
           <Container className="w-6 md:w-10">
             <Profile src="public/images/image-avatar.png" />

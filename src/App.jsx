@@ -21,7 +21,7 @@ import Amount from "./components/Amount"
 
 
 export default function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1); // terug zetten naar 0
   const [price, setPrice] = useState(null)
   const [amount, setAmount] = useState(null)
 
@@ -31,7 +31,7 @@ export default function App() {
   const [disable, setDisable] = useState(false)
   const [image, setImage] = useState(1)
   const [selectImage, setSelectImage] = useState(null)
-  const [removeCartBasket, setRemoveCartBasket] = useState('hidden');
+  const [removeCartBasket, setRemoveCartBasket] = useState('block');
 
   const [opacity1, setOpacity1] = useState("opacity-30")
   const [opacity2, setOpacity2] = useState(null)
@@ -146,7 +146,7 @@ export default function App() {
         <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px] md:p-0">
           <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[330px] md:h-[380px] object-cover" />
           {/* check if the cart w/h dimensions are correct */}
-          <CartBasket className={`${removeCartBasket} absolute z-20 h-[85%] w-[95%] justify-start flex-col flex top-[7%] left-[2.5%] m-auto bg-white md:hidden rounded-lg translate-y-[-5%]`}>
+          <CartBasket className={`${removeCartBasket} absolute shadow-2xl z-20 h-[85%] md:h-[50%] w-[95%] justify-start flex-col flex top-[7%] left-[2.5%] m-auto bg-white rounded-lg translate-y-[-4%] md:translate-y-[-50%] md:translate-x-[200%]`}>
             <Container className={`flex-col flex-1 flex`}>
               <Container className="w-full flex flex-col justify-center gap-5 pt-5">
                 <Container className="w-full px-5 flex justify-between items-center">
@@ -158,7 +158,7 @@ export default function App() {
               <Container className="h-full w-full flex flex-col justify-center items-center px-6 gap-7"><Sub className={`${count === 0 ? "block" : "hidden"}`}>Your cart is empty.</Sub>
               {/* refactor the  empty */}
               <Container className={`flex gap-4 items-center w-full ${count >= 1 ? "block" : "hidden"}`}> {/* This is the basket product section */}
-                <Thumbnail className="w-16 rounded-md" src="public/images/image-product-1-thumbnail.jpg" />
+                <Thumbnail className="w-16 md:w-12 rounded-md" src="public/images/image-product-1-thumbnail.jpg" />
                 <Container><Sub className="text-darkGrayish">Fall Limited Edition Sneakers</Sub>
                 {price && price.map(item => { {/* This is the cartbasket product details */}
                   return (
@@ -171,7 +171,7 @@ export default function App() {
                 </Container>
                 <Container><Icon src="public/images/icon-delete.svg" /></Container>
               </Container>
-              <Container className={`w-full flex justify-center ${count >= 1 ? "block" : "hidden"}`}><Button className="bg-orange w-full py-4 rounded-lg text-white">Checkout</Button></Container>
+              <Container className={`w-full flex justify-center ${count >= 1 ? "block" : "hidden"}`}><Button className="bg-orange w-full py-4 md:py-3 rounded-lg text-white">Checkout</Button></Container>
               {/* refactor the checkout button */}
               </Container>
             </Container>

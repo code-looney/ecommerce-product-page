@@ -33,7 +33,7 @@ export default function App() {
   const [image, setImage] = useState(1)
   const [selectImage, setSelectImage] = useState(null)
   const [removeCartBasket, setRemoveCartBasket] = useState('hidden');
-  const [toggleLightBoxFullSize, setToggleLightBoxFullSize] = useState('hidden');
+  const [toggleLightBoxFullSize, setToggleLightBoxFullSize] = useState('block'); // verander terug naar hidden
 
   const [opacity1, setOpacity1] = useState("opacity-30")
   const [opacity2, setOpacity2] = useState(null)
@@ -284,15 +284,15 @@ export default function App() {
               )
             })}
           </Container>
-          <Container className="absolute z-10 h-full justify-between items-center flex top-0 w-full px-3">
+          <Container className="absolute z-10  h-[80%] justify-between items-center flex w-full px-3">
                   {/* refactor de next en prev zodat het in het midden komt te staan accuraat*/}
 
-            <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full ">
+            <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full translate-x-[-30px] ">
                   {/* refactor de next en prev zodat het in het midden komt te staan accuraat*/}
 
               <ButtonIcon disabled={image === 1 ? true : false} onClick={hamdlePrevImageClick} className="bg-white w-3 h-4 flex items-center justify-center rounded-full" classnameiconbtn="w-full h-full rounded-full flex justify-center items-center" src="public/images/icon-previous.svg" />
             </Container>
-            <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full ">
+            <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full  translate-x-[30px] ">
                   {/* refactor de next en prev zodat het in het midden komt te staan accuraat*/}
 
               <ButtonIcon disabled={image === 4 ? true : false} onClick={hamdleNextImageClick} className="bg-white w-3 h-4 flex items-center justify-center rounded-full" classnameiconbtn="w-full h-full rounded-full flex justify-center items-center" src="public/images/icon-next.svg" />

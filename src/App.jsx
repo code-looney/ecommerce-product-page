@@ -33,6 +33,7 @@ export default function App() {
   const [image, setImage] = useState(1)
   const [selectImage, setSelectImage] = useState(null)
   const [removeCartBasket, setRemoveCartBasket] = useState('hidden');
+  const [toggleLightBoxFullSize, setToggleLightBoxFullSize] = useState('hidden');
 
   const [opacity1, setOpacity1] = useState("opacity-30")
   const [opacity2, setOpacity2] = useState(null)
@@ -146,7 +147,7 @@ export default function App() {
       </Container>
       <Container className="w-full md:flex md:h-[650px] md:items-center justify-center md:gap-20">
         <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px] md:p-0">
-          <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[330px] md:h-[380px] object-cover" />
+          <Lightbox onClick={() => setToggleLightBoxFullSize('block')} src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[330px] md:h-[380px] object-cover" />
           {/* check if the cart w/h dimensions are correct */}
           <CartBasket className={`${removeCartBasket} absolute shadow-2xl z-20 h-[85%] md:h-[50%] w-[95%] justify-start flex-col flex top-[7%] left-[2.5%] m-auto bg-white rounded-lg translate-y-[-4%] md:translate-y-[-50%] md:translate-x-[200%]`}>
             <Container className={`flex-col flex-1 flex`}>
@@ -260,9 +261,9 @@ export default function App() {
         </Container>
       </Container>
     </Container>
-    <LightBoxFullSize className="absolute top-0 flex justify-center w-full h-full items-center bg-black bg-opacity-70 z-50">
+    <LightBoxFullSize className={`${toggleLightBoxFullSize} absolute top-0 flex justify-center w-full h-full items-center bg-black bg-opacity-70 z-50`}>
     <Container className=" translate-y-[-260px] translate-x-[450px]">
-      <Button onClick={() => console.log('test')}><RxCross1 className="text-orange" /></Button>
+      <Button onClick={() => setToggleLightBoxFullSize('hidden')}><RxCross1 className="text-orange" /></Button>
     </Container>
         <Container className="md:w-[450px] relative md:flex md:flex-col md:justify-between md:h-[550px] gap-10 translate-y-10">          
           {/* check de thumbnails positie nogmaals (hij valt uit de div)*/}
@@ -273,7 +274,7 @@ export default function App() {
               return (
                 <Container key={item.id} className="flex items-center translate-y-[-6px]">
                   {/* dit zijn de thumbnail border colors...*/}
-                  <Button className={`rounded-xl bg-white w-[65px] ${item.id === 1 ? borderColor1 : ""} ${item.id === 2 ? borderColor2 : ""} ${item.id === 3 ? borderColor3 : ""} ${item.id === 4 ? borderColor4 : ""}`} onClick={() => handleSelectedImage(item.id, index)}>
+                  <Button className={`rounded-xl bg-white w-[70px] ${item.id === 1 ? borderColor1 : ""} ${item.id === 2 ? borderColor2 : ""} ${item.id === 3 ? borderColor3 : ""} ${item.id === 4 ? borderColor4 : ""}`} onClick={() => handleSelectedImage(item.id, index)}>
                                       {/* maak de tweede lightbox/thumbnails onafhankelijk...*/}
 
                   {/* dit zijn de thumbnail opacities...*/}

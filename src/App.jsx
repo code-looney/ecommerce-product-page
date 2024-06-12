@@ -139,7 +139,7 @@ export default function App() {
   
   return (
     <>
-    <Container className="h-screen pb-[950px] md:pb-0">
+    <Container className="h-screen pb-[950px] md:pb-0 overflow-hidden">
       <Header count={count} removeCartBasket={removeCartBasket} setRemoveCartBasket={setRemoveCartBasket} />
       <Container className="hidden md:flex justify-center w-full px-[240px]">
         <Rule className="md:w-full"/>
@@ -260,48 +260,22 @@ export default function App() {
         </Container>
       </Container>
     </Container>
-    <LightBoxFullSize className="absolute top-0 flex justify-center outline w-full h-full items-center bg-black bg-opacity-70 z-50">
-        <Container className="md:w-96 w-full relative md:flex md:flex-col md:justify-between md:h-[500px] md:p-0">
-          <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full h-[330px] md:h-[380px] object-cover" />
+    <LightBoxFullSize className="absolute top-0 flex justify-center w-full h-full items-center bg-black bg-opacity-70 z-50">
+    <Container className=" translate-y-[-260px] translate-x-[450px]">
+      <Button onClick={() => console.log('test')}><RxCross1 className="text-orange" /></Button>
+    </Container>
+        <Container className="md:w-[450px] relative md:flex md:flex-col md:justify-between md:h-[550px] gap-10 translate-y-10">          
+          {/* check de thumbnails positie nogmaals (hij valt uit de div)*/}
+          <Lightbox src={`public/images/image-product-${image}.jpg`} className="md:rounded-xl w-full md:h-full object-cover" />
           {/* check if the cart w/h dimensions are correct */}
-          <CartBasket className={`${removeCartBasket} absolute shadow-2xl z-20 h-[85%] md:h-[50%] w-[95%] justify-start flex-col flex top-[7%] left-[2.5%] m-auto bg-white rounded-lg translate-y-[-4%] md:translate-y-[-50%] md:translate-x-[200%]`}>
-            <Container className={`flex-col flex-1 flex`}>
-              <Container className="w-full flex flex-col justify-center gap-5 pt-5">
-                <Container className="w-full px-5 flex justify-between items-center">
-                  <Title>Cart</Title>
-                  <Button onClick={() => setRemoveCartBasket('hidden')}><Icon src="public/images/icon-close.svg" /></Button>
-                </Container>
-                  <Rule className="w-full" />
-              </Container>
-              <Container className="h-full w-full flex flex-col justify-center items-center px-6 gap-7"><Sub className={`${count === 0 ? "block" : "hidden"}`}>Your cart is empty.</Sub>
-              {/* refactor the  empty */}
-              <Container className={`flex gap-4 items-center w-full ${count >= 1 ? "block" : "hidden"}`}> {/* This is the basket product section */}
-                <Thumbnail className="w-16 md:w-12 rounded-md" src="public/images/image-product-1-thumbnail.jpg" />
-                <Container><Sub className="text-darkGrayish">Fall Limited Edition Sneakers</Sub>
-                {price && price.map(item => { {/* This is the cartbasket product details */}
-                  return (
-                    <Container key={item.id} className="flex gap-1"><BasePrice  className="text-darkGrayish">{`$${(item.discount ? item.price * item.discount : item.price).toFixed(2)}`}</BasePrice>
-                    <Counter className="text-darkGrayish">x {count}</Counter>
-                    <Amount className="font-bold">{`$${(item.discount ? item.price * item.discount : item.price).toFixed(2) * count}`}</Amount> {/* refactor het optellen van de price naar een state amount */}
-                    </Container>
-                  )
-                })}
-                </Container>
-                <Container><Icon className="cursor-pointer" onClick={() => setCount(prev => prev - 1)} src="public/images/icon-delete.svg" /></Container>
-                {/* de delete button moet de product verwijderen zelf als de count hoger is dan 1 
-                dus zorg er voor de de gebuiker met een edit button de count can aanpassen*/}
-              </Container>
-              <Container className={`w-full flex justify-center ${count >= 1 ? "block" : "hidden"}`}><Button className="bg-orange w-full py-4 md:py-3 rounded-lg text-white">Checkout</Button></Container>
-              {/* refactor the checkout button */}
-              </Container>
-            </Container>
-          </CartBasket>
-          <Container className="hidden md:flex flex-row justify-between gap-4 outline relative z-20">
+          <Container className="md:flex flex-row justify-center gap-6 relative z-20">
             {selectImage && selectImage.map((item, index) => {
               return (
-                <Container key={item.id}>
+                <Container key={item.id} className="flex items-center translate-y-[-6px]">
                   {/* dit zijn de thumbnail border colors...*/}
-                  <Button className={`rounded-xl bg-white ${item.id === 1 ? borderColor1 : ""} ${item.id === 2 ? borderColor2 : ""} ${item.id === 3 ? borderColor3 : ""} ${item.id === 4 ? borderColor4 : ""}`} onClick={() => handleSelectedImage(item.id, index)}>
+                  <Button className={`rounded-xl bg-white w-[65px] ${item.id === 1 ? borderColor1 : ""} ${item.id === 2 ? borderColor2 : ""} ${item.id === 3 ? borderColor3 : ""} ${item.id === 4 ? borderColor4 : ""}`} onClick={() => handleSelectedImage(item.id, index)}>
+                                      {/* maak de tweede lightbox/thumbnails onafhankelijk...*/}
+
                   {/* dit zijn de thumbnail opacities...*/}
                         <Thumbnail className={`rounded-xl hover:opacity-50 ${item.id === 1 ? opacity1 : ""} ${item.id === 2 ? opacity2 : ""} ${item.id === 3 ? opacity3 : ""} ${item.id === 4 ? opacity4 : ""}`} src={`public/images/image-product-${item.image}-thumbnail.jpg`} />
                   </Button>
@@ -309,11 +283,17 @@ export default function App() {
               )
             })}
           </Container>
-          <Container className="absolute z-10 h-full justify-between items-center flex top-0 w-full px-3 outline">
+          <Container className="absolute z-10 h-full justify-between items-center flex top-0 w-full px-3">
+                  {/* refactor de next en prev zodat het in het midden komt te staan accuraat*/}
+
             <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full ">
+                  {/* refactor de next en prev zodat het in het midden komt te staan accuraat*/}
+
               <ButtonIcon disabled={image === 1 ? true : false} onClick={hamdlePrevImageClick} className="bg-white w-3 h-4 flex items-center justify-center rounded-full" classnameiconbtn="w-full h-full rounded-full flex justify-center items-center" src="public/images/icon-previous.svg" />
             </Container>
             <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full ">
+                  {/* refactor de next en prev zodat het in het midden komt te staan accuraat*/}
+
               <ButtonIcon disabled={image === 4 ? true : false} onClick={hamdleNextImageClick} className="bg-white w-3 h-4 flex items-center justify-center rounded-full" classnameiconbtn="w-full h-full rounded-full flex justify-center items-center" src="public/images/icon-next.svg" />
             </Container>
           </Container>

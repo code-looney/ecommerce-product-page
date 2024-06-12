@@ -285,15 +285,15 @@ export default function App() {
             })}
           </Container>
           <Container className="absolute z-10  h-[80%] justify-between items-center flex w-full px-3">
-                  {/* refactor de next en prev zodat het in het midden komt te staan accuraat*/}
+                  {/* refactor de next en prev zodat het accuraat in het midden komt te staan */}
 
             <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full translate-x-[-30px] ">
-                  {/* refactor de next en prev zodat het in het midden komt te staan accuraat*/}
+                  {/* refactor de next en prev zodat het accuraat in het midden komt te staan */}
 
               <ButtonIcon disabled={image === 1 ? true : false} onClick={hamdlePrevImageClick} className="bg-white w-3 h-4 flex items-center justify-center rounded-full" classnameiconbtn="w-full h-full rounded-full flex justify-center items-center" src="public/images/icon-previous.svg" />
             </Container>
             <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full  translate-x-[30px] ">
-                  {/* refactor de next en prev zodat het in het midden komt te staan accuraat*/}
+                  {/* refactor de next en prev zodat het accuraat in het midden komt te staan */}
 
               <ButtonIcon disabled={image === 4 ? true : false} onClick={hamdleNextImageClick} className="bg-white w-3 h-4 flex items-center justify-center rounded-full" classnameiconbtn="w-full h-full rounded-full flex justify-center items-center" src="public/images/icon-next.svg" />
             </Container>

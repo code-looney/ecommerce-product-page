@@ -33,7 +33,7 @@ export default function App() {
   const [image, setImage] = useState(1)
   const [selectImage, setSelectImage] = useState(null)
   const [removeCartBasket, setRemoveCartBasket] = useState('hidden');
-  const [toggleLightBoxFullSize, setToggleLightBoxFullSize] = useState('block'); // verander terug naar hidden
+  const [toggleLightBoxFullSize, setToggleLightBoxFullSize] = useState('hidden'); // verander terug naar hidden
 
   const [opacity1, setOpacity1] = useState("opacity-30")
   const [opacity2, setOpacity2] = useState(null)
@@ -284,7 +284,7 @@ export default function App() {
               )
             })}
           </Container>
-          <Container className="absolute z-10  h-[80%] justify-between items-center flex w-full px-3">
+          <Container className="absolute z-10  h-[80%] n justify-between items-center flex w-full px-3">
                   {/* refactor de next en prev zodat het accuraat in het midden komt te staan */}
 
             <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full translate-x-[-30px] ">

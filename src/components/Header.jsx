@@ -54,9 +54,9 @@ const Header = ({removeCartBasket, setRemoveCartBasket, count}) => {
           </MobileMenu>
             <MobileMenu className={`absolute bg-${shadow} ${menu} opacity-70 top-0 left-0 z-10 w-full h-full md:hidden`} />
           <Container className="flex items-center gap-4"> 
-            <HumburgerMenu className='relative z-50 w-[18px] md:hidden' onClick={handleMenuClick} src={`public/images/icon-${toggle}.svg`} />
+            <HumburgerMenu className='relative z-50 w-[18px] md:hidden' onClick={handleMenuClick} src={`/images/icon-${toggle}.svg`} />
           <Container className='flex items-center'>
-            <Logo src="public/images/logo.svg" />
+            <Logo src="/images/logo.svg" />
           </Container>
           <DeskMenu className='hidden md:flex md:gap-5 pl-10 text-[14px] h-full'>
             <Link className='hover:border-b-orange border-b-4 border-transparent h-full flex items-center'>Connections</Link>
@@ -70,12 +70,12 @@ const Header = ({removeCartBasket, setRemoveCartBasket, count}) => {
       <Container className={`flex relative ${zIndex}`}>
         <Container className="flex items-center gap-5">
           <Container className="w-4">
-            <CartIcon className="relative" onClick={() => handleRemoveCartBasketClick()} src="public/images/icon-cart.svg" />
+            <CartIcon className="relative" onClick={() => handleRemoveCartBasketClick()} src="/images/icon-cart.svg" />
               <span className='absolute  text-[8px] px-2 text-white rounded-full bg-orange translate-x-[-10px] translate-y-[-3px]'>{count === 0 ? "" : count}</span>
               {/* refactor the counter icon basket */}
           </Container>
           <Container className="w-6 md:w-10">
-            <Profile src="public/images/image-avatar.png" />
+            <Profile src="/images/image-avatar.png" />
           </Container>
         </Container>
       </Container>

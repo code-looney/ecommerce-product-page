@@ -8,7 +8,7 @@ import HumburgerMenu from './HumburgerMenu'
 import MobileMenu from './MobileMenu'
 import DeskMenu from './DeskMenu'
 
-const Header = ({removeCartBasket, setRemoveCartBasket, count}) => {
+const Header = ({removeCartBasket, setRemoveCartBasket, count, iconCounter, setIconCounter, iconCounterHidden}) => {
   const [toggle, setToggle] = useState('menu');
   const [menu, setMenu] = useState('hidden');
   const [shadow, setShadow] = useState('black');
@@ -33,13 +33,13 @@ const Header = ({removeCartBasket, setRemoveCartBasket, count}) => {
   }
   
   function handleRemoveCartBasketClick() {
-    console.log('test')
     if (removeCartBasket === "hidden") {
       setRemoveCartBasket('block');
     } else {
       setRemoveCartBasket('hidden');
     }
   }
+  
   return (
     <header className={`h-16 md:h-24 flex items-center justify-center ou`}>
      <Container className='flex h-full w-full px-5 md:px-60 justify-between'>
@@ -71,7 +71,7 @@ const Header = ({removeCartBasket, setRemoveCartBasket, count}) => {
         <Container className="flex items-center gap-5">
           <Container className="w-4">
             <CartIcon className="relative" onClick={() => handleRemoveCartBasketClick()} src="/images/icon-cart.svg" />
-              <span className='absolute  text-[8px] px-2 text-white rounded-full bg-orange translate-x-[-10px] translate-y-[-3px]'>{count === 0 ? "" : count}</span>
+              <span  className={`absolute  text-[8px] px-2 text-white rounded-full bg-orange translate-x-[-10px] translate-y-[-3px] ${iconCounter <= 0 ? "hidden" : ""}`}>{iconCounter}</span>
               {/* refactor the counter icon basket */}
           </Container>
           <Container className="w-6 md:w-10">

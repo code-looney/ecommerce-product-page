@@ -19,6 +19,7 @@ import CartBasket from "./components/CartBasket"
 import { RxCross1 } from "react-icons/rx";
 import Amount from "./components/Amount"
 import LightBoxFullSize from "./components/LightBoxFullSize"
+import {loadStripe} from "@stripe/stripe-js";
 
 
 export default function App() {
@@ -34,6 +35,8 @@ export default function App() {
   const [selectImage, setSelectImage] = useState(null)
   const [removeCartBasket, setRemoveCartBasket] = useState('hidden');
   const [toggleLightBoxFullSize, setToggleLightBoxFullSize] = useState('hidden'); 
+  const [iconCounter, setIconCounter] = useState(null);
+  const [iconCounterHidden, setIconCounterHidden] = useState("");
 
   const [opacity1, setOpacity1] = useState("opacity-30")
   const [opacity2, setOpacity2] = useState(null)
@@ -44,7 +47,6 @@ export default function App() {
   const [borderColor2, setBorderColor2] = useState(null)
   const [borderColor3, setBorderColor3] = useState(null)
   const [borderColor4, setBorderColor4] = useState(null)
-
 
   useEffect(() => {
     fetch("./data.json")
@@ -137,11 +139,49 @@ export default function App() {
    function hamdlePrevImageClick() {
       setImage(image - 1)
   }
+
+  function handleAddToCart() {
+    if (count >= 1) {
+      setIconCounter(count)
+      setRemoveCartBasket('block')
+    } else { 
+      setRemoveCartBasket('hidden')
+    }
+  }
+
+  function handleDeleteClick() {
+    setCount(prev => prev - 1)
+    setIconCounter(count - 1)
+    // setIconCounterHidden("hidden")
+  } // test
+
+  const stripeLoadedPromise = loadStripe('pk_test_51PSe9GRt2agVgr5bbuM6jmZambGkXtK21QTekrKcXwSDxRzKaefcAMtAJHdad3eRfjN6SwXKpbjOZYBZa6dxXTt000EEQfO1iX');
+
+  function handleClick(event) {
+    stripeLoadedPromise.then(stripe => {
+      stripe.redirectToCheckout({
+        lineItems: [{
+          price: 'price_1PT3zLRt2agVgr5bl99agIWu',
+          quantity: 1,
+        }],
+        mode: 'payment',
+        successUrl: 'https://ecommerce-product-page-1001.netlify.app/',
+        cancelUrl: 'https://ecommerce-product-page-1001.netlify.app/',
+      }).then(response => {
+        // this will only log if the redirect did not work
+        console.log(response.error);
+      }).catch(error => {
+        // wrong API key? you will see the error message here
+        console.log(error);
+      });
+    });
+  };  
+
   
   return (
     <>
     <Container className="h-screen pb-[800px] md:pb-0 overflow-hidden">
-      <Header count={count} removeCartBasket={removeCartBasket} setRemoveCartBasket={setRemoveCartBasket} />
+      <Header iconCounterHidden={iconCounterHidden} iconCounter={iconCounter} count={count} removeCartBasket={removeCartBasket} setRemoveCartBasket={setRemoveCartBasket} />
       <Container className="hidden md:flex justify-center w-full px-[240px]">
         <Rule className="md:w-full"/>
       </Container>
@@ -172,11 +212,11 @@ export default function App() {
                   )
                 })}
                 </Container>
-                <Container><Icon className="cursor-pointer" onClick={() => setCount(prev => prev - 1)} src="/images/icon-delete.svg" /></Container>
+                <Container><Icon className="cursor-pointer" onClick={handleDeleteClick} src="/images/icon-delete.svg" /></Container>
                 {/* de delete button moet de product verwijderen zelf als de count hoger is dan 1 
                 dus zorg er voor de de gebuiker met een edit button de count can aanpassen*/}
               </Container>
-              <Container className={`w-full flex justify-center ${count >= 1 ? "block" : "hidden"}`}><Button className="bg-orange w-full py-4 md:py-3 rounded-lg text-white">Checkout</Button></Container>
+              <Container className={`w-full flex justify-center ${count >= 1 ? "block" : "hidden"}`}><Button  onClick={handleClick} className="bg-orange w-full py-4 md:py-3 rounded-lg text-white">Checkout</Button></Container>
               {/* refactor the checkout button */}
               </Container>
             </Container>
@@ -249,7 +289,7 @@ export default function App() {
                         </Container>
                       </Container>
                         <Container className="flex justify-center text-white font-bold w-full">
-                          <Button onClick={() => count >= 1 ? setRemoveCartBasket('block') : setRemoveCartBasket('hidden')} className="flex gap-3 items-center bg-orange w-full mx-5 md:w-60 justify-center py-3 rounded-lg"><HiOutlineShoppingCart className="" />Add to cart</Button>
+                          <Button onClick={() => handleAddToCart()} className="flex gap-3 items-center bg-orange w-full mx-5 md:w-60 justify-center py-3 rounded-lg"><HiOutlineShoppingCart className="" />Add to cart</Button>
 
                           {/* kom hier terug om de producten toe te voegen met the add button en niet per count */}
                         </Container>

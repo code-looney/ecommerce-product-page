@@ -17,7 +17,6 @@ import Thumbnail from "./components/Thumbnail"
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import CartBasket from "./components/CartBasket"
 import { RxCross1 } from "react-icons/rx";
-import Amount from "./components/Amount"
 import LightBoxFullSize from "./components/LightBoxFullSize"
 import {loadStripe} from "@stripe/stripe-js";
 

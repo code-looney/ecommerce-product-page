@@ -14,13 +14,13 @@ import Counter from "./components/Counter"
 import Icon from "./components/Icon"
 import Button from "./components/Button"
 import Thumbnail from "./components/Thumbnail"
-import { HiOutlineShoppingCart } from "react-icons/hi";
 import CartBasket from "./components/CartBasket"
-import { RxCross1 } from "react-icons/rx";
 import LightBoxFullSize from "./components/LightBoxFullSize"
 import {loadStripe} from "@stripe/stripe-js";
 import ImageThumbnailSelector from "./ImageThumbnailSelector"
 import ImageNavigationControls from "./ImageNavigationControls"
+import ProductPriceDetails from "./ProductPriceDetails"
+import LightboxClose from "./LightboxClose"
 
 
 export default function App() {
@@ -199,71 +199,16 @@ export default function App() {
           <ImageThumbnailSelector onSelectedImage={handleSelectedImage} selectImage={selectImage} borderColor1={borderColor1} borderColor2={borderColor2} borderColor3={borderColor3} borderColor4={borderColor4} opacity1={opacity1} opacity2={opacity2} opacity3={opacity3} opacity4={opacity4} />
           <ImageNavigationControls image={image} onPrevImageClick={hamdlePrevImageClick} onHandleClick={hamdleNextImageClick} />
 
-
         </Container>
-        <Container className="flex justify-center">
-          <Container>
-            <Container className="h-[250px] md:flex flex-col items-center pt-5 md:justify-center">
-              <Container className="px-5 w-full flex-col pb-5 md:flex gap-3 flex">
-                  <Title className="uppercase font-bold text-[14px] text-orange hsl(26, 100%, 55%)]">Sneaker Company</Title>
-                <Container className="flex-col flex gap-5 md:gap-7 md:flex">
-                  <Sub className="text-[32px] font-bold tracking-wide leading-9">Fall Limited Edition <br className="hidden md:block" />Sneakers</Sub>
-                <Paragraph className="text-darkGrayish text-[14px] tracking-wider leading-6">These low-profile sneakers are your perfect <br className="hidden md:block" /> casual wear companion. Featuring a
-                  durable <br className="hidden md:block" />rubber outer sole, they’ll withstand everything <br className="hidden md:block" /> the weather can offer.</Paragraph>
-                </Container>
-              </Container>
-              <Container className="flex flex-col">
-              {price && price.map(item => {
-                 // dynamic id plaatsen / leren !
 
-               return (
-                  <Container key={item.id} className="flex flex-col">
-                    {/* { console.log(crypto.randomUUID() )} 
-                    give product/products a unique*/}
-                    <Container>
-                      <Container className="px-5 flex justify-between w-full items-center mb-5 md:flex-col md:justify-start md:items-start">
-                        <Container className="flex gap-5 items-center">
-                          <BasePrice className="font-bold text-[24px]">{`$${(item.discount ? item.price * item.discount : item.price).toFixed(2)}`}</BasePrice>
-                          <Sale className="text-orange bg-paleOrange rounded-md px-2 font-bold text-[14px]">{item.sale}%</Sale>
-                        </Container>
-                        <FullPrice className="line-through text-grayishBlue font-bold md:text-[12px]">${item.price.toFixed(2)}</FullPrice>
-                      </Container>
-                    </Container>
-                    <Container className="flex w-full  flex-col gap-3 md:flex-row pt-0 md:pt-3">
-                      <Container className="w-full flex justify-center">
-                        <Container className="flex justify-between items-center px-5 w-full md:w-32 py-2 rounded-lg bg-lightGrayishBlue  mx-5">
-                          <Container className="flex items-center">
-                            <Button disabled={count === 0 ? true : false} onClick={handleSubProduct}>
-                              <Icon src="/images/icon-minus.svg" />
-                            </Button>
-                          </Container>
-                          <Counter>{count}</Counter>
-                          <Container className="flex items-center">
-                            <Button onClick={handleAddProduct}>
-                              <Icon src="/images/icon-plus.svg" />
-                            </Button>
-                          </Container>
-                        </Container>
-                      </Container>
-                        <Container className="flex justify-center text-white font-bold w-full">
-                          <Button onClick={() => handleAddToCart()} className="flex gap-3 items-center bg-orange w-full mx-5 md:w-60 justify-center py-3 rounded-lg"><HiOutlineShoppingCart className="" />Add to cart</Button>
-
-                          {/* kom hier terug om de producten toe te voegen met the add button en niet per count */}
-                        </Container>
-                        </Container>
-                    </Container>
-               )
-              })}
-              </Container>
-            </Container>
-          </Container>
-        </Container>
+        <ProductPriceDetails count={count} price={price} onAddToCart={handleAddToCart} onAddProduct={handleAddProduct} onSubProduct={handleSubProduct} />
+        
       </Container>
     </Container>
     <LightBoxFullSize className={`${toggleLightBoxFullSize} absolute top-0 flex justify-center w-full h-full items-center bg-black bg-opacity-70 z-50`}>
-    <Container className=" translate-y-[-260px] translate-x-[450px]">
-      <Button onClick={() => setToggleLightBoxFullSize('hidden')}><RxCross1 className="text-orange" /></Button>
-    </Container>
+          {/* begin */}
+          <LightboxClose setToggleLightBoxFullSize={setToggleLightBoxFullSize} />
+          {/* end */}
         <Container className="md:w-[450px] relative md:flex md:flex-col md:justify-between md:h-[550px] gap-10 translate-y-10">          
           {/* check de thumbnails positie nogmaals (hij valt uit de div)*/}
           <Lightbox src={`/images/image-product-${image}.jpg`} className="md:rounded-xl w-full md:h-full object-cover" />

@@ -19,7 +19,7 @@ const LightboxContainer = (props) => {
         return (
           <Container key={item.id} className="flex items-center translate-y-[-6px]">
             {/* dit zijn de thumbnail border colors...*/}
-            <Button className={`rounded-xl bg-white w-[70px] ${item.id === 1 ? borderColor1 : ""} ${item.id === 2 ? borderColor2 : ""} ${item.id === 3 ? borderColor3 : ""} ${item.id === 4 ? borderColor4 : ""}`} onClick={() => handleSelectedImage(item.id, index)}>
+            <Button className={`rounded-xl bg-white w-[70px] ${item.id === 1 ? borderColor1 : ""} ${item.id === 2 ? borderColor2 : ""} ${item.id === 3 ? borderColor3 : ""} ${item.id === 4 ? borderColor4 : ""}`} onClick={() => props.onSelectedImage(item.id, index)}>
               {/* maak de tweede lightbox/thumbnails onafhankelijk...*/}
 
             {/* dit zijn de thumbnail opacities...*/}

@@ -1,19 +1,23 @@
 [
     {
         "image": 1,
+        "imageLightbox": 1,
         "id": 1
     },
     {
         "image": 2,
+        "imageLightbox": 2,
         "id": 2
     },
     {
         "image": 3,
+        "imageLightbox": 3,
         "id": 3
 
     },
     {
         "image": 4,
+        "imageLightbox": 4,
         "id": 4
         
     }

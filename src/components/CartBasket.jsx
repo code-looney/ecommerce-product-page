@@ -12,7 +12,6 @@ import Amount from './Amount';
 
 const CartBasket = (props) => {
     const {children, count, iconCounter, price, setRemoveCartBasket, ...rest} = props;
-    console.log(price)
 
   return (
     <Container {...rest}>

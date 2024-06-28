@@ -20,7 +20,7 @@ export default function App() {
   const [selectImage, setSelectImage] = useState(null)
   const [selectedImageLightbox, setSelectedImageLightbox] = useState(null)
   const [removeCartBasket, setRemoveCartBasket] = useState('hidden');
-  const [toggleLightBoxFullSize, setToggleLightBoxFullSize] = useState('block'); 
+  const [toggleLightBoxFullSize, setToggleLightBoxFullSize] = useState('hidden'); 
   const [iconCounter, setIconCounter] = useState(null);
   const [iconCounterHidden, setIconCounterHidden] = useState("");
 
@@ -182,11 +182,13 @@ export default function App() {
 
 
   function handleNextImageClick() {
+      setImage(prev => prev + 1)
       setImageLightbox(prev => prev + 1)
 
   }
 
    function handlePrevImageClick() {
+    setImage(prev => prev - 1)
     setImageLightbox(prev => prev - 1)
   }
   
@@ -273,7 +275,7 @@ export default function App() {
           <ImageNavigationControls 
             image={image} 
             onPrevImageClick={handlePrevImageClick} 
-            onHandleClick={handleNextImageClick} />
+            onNextImageClick={handleNextImageClick} />
       </Container>
 
     <ProductPriceDetails 

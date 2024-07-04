@@ -30,7 +30,7 @@ const LightboxContainer = (props) => {
       })}
       {selectedImageLightbox && selectedImageLightbox.map((item, index) => {
         return (
-          <Container key={item.id} className="absolute z-10 justify-between items-center flex w-full px-3 translate-y-[-270px">
+          <Container key={item.id} className="absolute z-10 justify-between items-center flex w-full px-3 translate-y-[-270px]">
               {/* refactor de next en prev zodat het accuraat in het midden komt te staan */}
 
               <Container className="bg-white w-10 h-10 flex items-center justify-center rounded-full translate-x-[-30px] ">

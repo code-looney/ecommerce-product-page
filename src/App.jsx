@@ -20,7 +20,7 @@ export default function App() {
   const [selectImage, setSelectImage] = useState(null)
   const [selectedImageLightbox, setSelectedImageLightbox] = useState(null)
   const [removeCartBasket, setRemoveCartBasket] = useState('hidden');
-  const [toggleLightBoxFullSize, setToggleLightBoxFullSize] = useState('hidden'); 
+  const [toggleLightBoxFullSize, setToggleLightBoxFullSize] = useState('block'); 
   const [iconCounter, setIconCounter] = useState(null);
   const [iconCounterHidden, setIconCounterHidden] = useState("");
 
